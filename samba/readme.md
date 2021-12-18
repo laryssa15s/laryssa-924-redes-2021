@@ -68,9 +68,7 @@ Exemplo: $ sudo hostnamectl set-hostname samba.Emanuelly-Laryssa_924.labredes.if
   
 ```bash
 $ netstat -an | grep LISTEN
-```
 
-```
 tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
 ```
@@ -115,7 +113,9 @@ smbd.service - Samba SMB Daemon
              └─3519875 /usr/sbin/smbd --foreground --no-proc>
 ```
 
-```
+```bash
+$ netstat -an | grep LISTEN
+
 tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN
 tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
@@ -499,14 +499,14 @@ $ sudo nano /etc/samba/smb.conf
 OBS: se já estiver em /etc/samba/ o comando é sudo nano smb.conf
 
 
-```
+```diff
 [global]
    workgroup = WORKGROUP
-   'netbios name = samba-srv
-   security = user'
+ + netbios name = samba-srv
+ + security = user
    server string = %h server (Samba, Ubuntu)
-   'interfaces = 127.0.0.1/8 ens160 ens192
-   bind interfaces only = yes'
+ + interfaces = 127.0.0.1/8 ens160 ens192
+ + bind interfaces only = yes 
    log file = /var/log/samba/log.%m
    max log size = 1000
    logging = file
@@ -533,14 +533,14 @@ OBS: se já estiver em /etc/samba/ o comando é sudo nano smb.conf
    browseable = yes
    read only = yes
    guest ok = no
-'[homes]
+-[homes]
    comment = Home Directories
    browseable = yes
    read only = no
    create mask = 0700
    directory mask = 0700
    valid users = %S
-[public]
+-[public]
    comment = public anonymous access
    path = /samba/public
    browsable =yes
@@ -551,11 +551,130 @@ OBS: se já estiver em /etc/samba/ o comando é sudo nano smb.conf
    guest only = yes
    force user = nobody
    force create mode = 0777
-   force directory mode = 0777'
-
+   force directory mode = 0777
 ```
 
+OBS: adicionar o "homes", "public" e as linhas com o símbolo "+"
 
+```
+● Reniciar o serviço smbd
+``` 
+
+```bash
+$ sudo systemctl restart smbd
+```
+
+```
+● Verificar as interfaces instaladas que as portas 139 e 445 estão rodando. 
+```
+
+```bash
+$ netstat -an | grep LISTEN
+
+tcp        0      0 127.0.0.1:139           0.0.0.0:*               LISTEN
+tcp        0      0 10.9.24.112:139         0.0.0.0:*               LISTEN
+tcp        0      0 192.168.0.89:139        0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:445           0.0.0.0:*               LISTEN
+tcp        0      0 10.9.24.112:445         0.0.0.0:*               LISTEN
+tcp        0      0 192.168.0.89:445        0.0.0.0:*               LISTEN
+```
+
+   9. Criar um usuário do S.O para que possa utilizar o compartilhamento samba:
+
+```
+● * O Samba já está instalado, agora precisamos criar um diretório para compartilhá-lo em rede.
+```
+
+```bash
+`$ sudo mkdir -p /samba/public
+```
+
+```
+● Configurar as permissões para que qualquer um possa acessar o compartilhamento público.
+```
+
+```bash
+$ sudo chown -R nobody:nogroup /samba/public
+$ sudo chmod -R 0777 /samba/public
+$ sudo chgrp sambashare /samba/public
+```
+
+```
+● Reiniciar o serviço
+```
+
+```bash
+$ sudo systemctl restart smbd
+```
+
+```
+● Criar um usuário para que possa utilizar o compartilhamento samba:
+
+* usuário: aluno924
+* senha: alunoifa
+```
+
+```bash
+$ sudo adduser aluno924
+```
+
+```
+Adding user `laryssa924' ...
+Adding new group `laryssa924' (1003) ...
+Adding new user `laryssa924' (1003) with group `laryssa924' ...
+Creating home directory `/home/laryssa924' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for laryssa924
+Enter the new value, or press ENTER for the default
+        Full Name []: Aluna de SRED do IFAL Arapiraca
+        Room Number []: 924
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] Y
+```
+
+```
+● Verificar se foi adicionado
+```
+
+```bash
+$ getent passwd
+```
+
+```
+laryssa924:x:1003:1003:Aluna de SRED do IFAL Arapiraca,924,,:/home/laryssa924:/bin/bash
+```
+
+```
+● É necessário vincular o usuário do S.O. ao Serviço Samba. Repita a senha do laryssa924 ou crie uma senha nova somente para acessar o compartilhamento de arquivo. Neste caso repetiremos a senha do usuário laryssa924.
+```
+
+```bash
+$ sudo smbpasswd -a laryssa924
+
+New SMB password:
+Retype new SMB password:
+Added user laryssa924.
+```
+
+```bash
+$ sudo usermod -aG sambashare laryssa924
+
+sambashare:x:118:laryssa924
+```
+
+   10. Cliente do compartilhamento
+
+```
+* Em um máquina com Windows (também pode usar linux os MacOS) digite no Winndows Explorer o endereço IP do servidor samba da seguinte forma:
+**\\ip_do_maquina**. Exemplo: \\10.9.24.112
+```
 
 
 

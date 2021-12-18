@@ -177,7 +177,7 @@ $ cat smb.conf
 ## Browsing/Identification ###
 
 
-# Change this to the workgroup/NT-domain name your Samba server will pa         rt of
+# Change this to the workgroup/NT-domain name your Samba server will part of
    workgroup = WORKGROUP
 
 
@@ -196,7 +196,7 @@ $ cat smb.conf
 
 # Only bind to the named interfaces and/or networks; you must use the
 # 'interfaces' option above to use this.
-# It is recommended that you enable this feature if your Samba machine          is
+# It is recommended that you enable this feature if your Samba machine is
 # not protected by a firewall or is a firewall itself.  However, this
 # option cannot handle dynamic or non-broadcast interfaces correctly.
 ;   bind interfaces only = yes
@@ -219,7 +219,7 @@ $ cat smb.conf
 
 
 # We want Samba to only log to /var/log/samba/log.{smbd,nmbd}.
-# Append syslog@1 if you want important messages to be sent to syslog t         oo.
+# Append syslog@1 if you want important messages to be sent to syslog too.
    logging = file
 
 
@@ -247,17 +247,17 @@ $ cat smb.conf
    obey pam restrictions = yes
 
 
-# This boolean parameter controls whether Samba attempts to sync the Un         ix
+# This boolean parameter controls whether Samba attempts to sync the Unix
 # password with the SMB password when the encrypted SMB password in the
 # passdb is changed.
    unix password sync = yes
 
 
-# For Unix password sync to work on a Debian GNU/Linux system, the foll         owing
-# parameters must be set (thanks to Ian Kahan <<kahan@informatik.tu-mue         nchen.de> for
-# sending the correct chat script for the passwd program in Debian Sarg         e).
+# For Unix password sync to work on a Debian GNU/Linux system, the following
+# parameters must be set (thanks to Ian Kahan <<kahan@informatik.tu-muenchen.de> for
+# sending the correct chat script for the passwd program in Debian Sarge).
    passwd program = /usr/bin/passwd %u
-   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassw         ord:* %n\n *password\supdated\ssuccessfully* .
+   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
 
 
 # This boolean controls whether PAM will be used for password changes
@@ -266,7 +266,7 @@ $ cat smb.conf
    pam password change = yes
 
 
-# This option controls how unsuccessful authentication attempts are map         ped
+# This option controls how unsuccessful authentication attempts are mapped
 # to anonymous connections
    map to guest = bad user
 
@@ -286,7 +286,7 @@ $ cat smb.conf
 # required a [profiles] share to be setup on the samba server (see
 # below)
 ;   logon path = \\%N\profiles\%U
-# Another common choice is storing the profile in the user's home direc         tory
+# Another common choice is storing the profile in the user's home directory
 # (this is Samba's default)
 #   logon path = \\%N\%U\profile
 
@@ -299,25 +299,25 @@ $ cat smb.conf
 
 
 # The following setting only takes effect if 'domain logons' is set
-# It specifies the script to run during logon. The script must be store         d
+# It specifies the script to run during logon. The script must be stored
 # in the [netlogon] share
 # NOTE: Must be store in 'DOS' file format convention
 ;   logon script = logon.cmd
 
 
-# This allows Unix users to be created on the domain controller via the          SAMR
-# RPC pipe.  The example command creates a user account with a disabled          Unix
+# This allows Unix users to be created on the domain controller via the SAMR
+# RPC pipe.  The example command creates a user account with a disabled Unix
 # password; please adapt to your needs
-; add user script = /usr/sbin/adduser --quiet --disabled-password --gec         os "" %u
+; add user script = /usr/sbin/adduser --quiet --disabled-password --gec os "" %u
 
 
-# This allows machine accounts to be created on the domain controller v         ia the
+# This allows machine accounts to be created on the domain controller via the
 # SAMR RPC pipe.
 # The following assumes a "machines" group exists on the system
-; add machine script  = /usr/sbin/useradd -g machines -c "%u machine ac         count" -d /var/lib/samba -s /bin/false %u
+; add machine script  = /usr/sbin/useradd -g machines -c "%u machine account" -d /var/lib/samba -s /bin/false %u
 
 
-# This allows Unix groups to be created on the domain controller via th         e SAMR
+# This allows Unix groups to be created on the domain controller via the SAMR
 # RPC pipe.
 ; add group script = /usr/sbin/addgroup --force-badname %g
 
@@ -369,12 +369,12 @@ $ cat smb.conf
 ;   read only = yes
 
 
-# File creation mask is set to 0700 for security reasons. If you want t         o
+# File creation mask is set to 0700 for security reasons. If you want to
 # create files with group=rw permissions, set next parameter to 0775.
 ;   create mask = 0700
 
 
-# Directory creation mask is set to 0700 for security reasons. If you w         ant to
+# Directory creation mask is set to 0700 for security reasons. If you want to
 # create dirs. with group=rw permissions, set next parameter to 0775.
 ;   directory mask = 0700
 
@@ -387,7 +387,7 @@ $ cat smb.conf
 ;   valid users = %S
 
 
-# Un-comment the following and create the netlogon directory for Domain          Logons
+# Un-comment the following and create the netlogon directory for Domain Logons
 # (you need to configure Samba to act as a domain controller too.)
 ;[netlogon]
 ;   comment = Network Logon Service

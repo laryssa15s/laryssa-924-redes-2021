@@ -678,7 +678,7 @@ sambashare:x:118:laryssa924
 
 <p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
    <img src="passo10.png" alt="acesso pelo cliente samba"
-	title="Figura 1: acesso pelo cliente samba" width="800" height="540" /> 
+	title="Figura 1: acesso pelo cliente samba" width="700" height="800" /> 
 
 
 

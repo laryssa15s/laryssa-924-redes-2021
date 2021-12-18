@@ -460,7 +460,8 @@ OBS: o comando acima é reponsável pela retirada de todos os comentários
 cat smb.conf
 ```
 
-```[global]
+```
+[global]
    workgroup = WORKGROUP
    server string = %h server (Samba, Ubuntu)
    log file = /var/log/samba/log.%m
@@ -499,62 +500,62 @@ $ sudo nano /etc/samba/smb.conf
 OBS: se já estiver em /etc/samba/ o comando é sudo nano smb.conf
 
 
-```diff
-[global]
-   workgroup = WORKGROUP
- + netbios name = samba-srv
- + security = user
-   server string = %h server (Samba, Ubuntu)
- + interfaces = 127.0.0.1/8 ens160 ens192
- + bind interfaces only = yes 
-   log file = /var/log/samba/log.%m
-   max log size = 1000
-   logging = file
-   panic action = /usr/share/samba/panic-action %d
-   server role = standalone server
-   obey pam restrictions = yes
-   unix password sync = yes
-   passwd program = /usr/bin/passwd %u
-   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
-   pam password change = yes
-   map to guest = bad user
-   usershare allow guests = yes
-[printers]
-   comment = All Printers
-   browseable = no
-   path = /var/spool/samba
-   printable = yes
-   guest ok = no
-   read only = yes
-   create mask = 0700
-[print$]
-   comment = Printer Drivers
-   path = /var/lib/samba/printers
-   browseable = yes
-   read only = yes
-   guest ok = no
--[homes]
-   comment = Home Directories
-   browseable = yes
-   read only = no
-   create mask = 0700
-   directory mask = 0700
-   valid users = %S
--[public]
-   comment = public anonymous access
-   path = /samba/public
-   browsable =yes
-   create mask = 0660
-   directory mask = 0771
-   writable = yes
-   guest ok = yes
-   guest only = yes
-   force user = nobody
-   force create mode = 0777
-   force directory mode = 0777
+```bash
+ [global]
+    workgroup = WORKGROUP
+   `netbios name = samba-srv
+    security = user`
+    server string = %h server (Samba, Ubuntu)
+   `interfaces = 127.0.0.1/8 ens160 ens192
+    bind interfaces only = yes`
+    log file = /var/log/samba/log.%m
+    max log size = 1000
+    logging = file
+    panic action = /usr/share/samba/panic-action %d
+    server role = standalone server
+    obey pam restrictions = yes
+    unix password sync = yes
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+    pam password change = yes
+    map to guest = bad user
+    usershare allow guests = yes
+ [printers]
+    comment = All Printers
+    browseable = no
+    path = /var/spool/samba
+    printable = yes
+    guest ok = no
+    read only = yes
+    create mask = 0700
+ [print$]
+    comment = Printer Drivers
+    path = /var/lib/samba/printers
+    browseable = yes
+    read only = yes
+    guest ok = no  
+`[homes]
+    comment = Home Directories
+    browseable = yes
+    read only = no
+    create mask = 0700
+    directory mask = 0700
+    valid users = %S
+[public]
+    comment = public anonymous access
+    path = /samba/public
+    browsable =yes
+    create mask = 0660
+    directory mask = 0771
+    writable = yes
+    guest ok = yes
+    guest only = yes
+    force user = nobody
+    force create mode = 0777
+    force directory mode = 0777
 ```
 
-OBS: adicionar o "homes", "public" e as linhas com o símbolo "+"
+OBS: Adicionar aquilo que está em destaque e, em relação as interfaces da máquina,  na linha "interfaces = 127.0.0.1/8 ens160 ens192" adicionaá-las separando-as os nomes por espaços.
 
 ```
 ● Reniciar o serviço smbd
@@ -588,7 +589,7 @@ tcp        0      0 192.168.0.89:445        0.0.0.0:*               LISTEN
 ```
 
 ```bash
-`$ sudo mkdir -p /samba/public
+$ sudo mkdir -p /samba/public
 ```
 
 ```

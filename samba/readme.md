@@ -645,9 +645,7 @@ Is the information correct? [Y/n] Y
 
 ```bash
 $ getent passwd
-```
 
-```
 laryssa924:x:1003:1003:Aluna de SRED do IFAL Arapiraca,924,,:/home/laryssa924:/bin/bash
 ```
 

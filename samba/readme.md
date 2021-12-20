@@ -613,12 +613,12 @@ $ sudo systemctl restart smbd
 ```
 ● Criar um usuário para que possa utilizar o compartilhamento samba:
 
-* usuário: aluno924
-* senha: alunoifa
+* usuário: laryssa924
+* senha: alunoifal
 ```
 
 ```bash
-$ sudo adduser aluno924
+$ sudo adduser laryssa924
 ```
 
 ```

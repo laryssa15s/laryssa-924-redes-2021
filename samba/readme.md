@@ -33,9 +33,9 @@ network:
             gateway4: 10.9.24.1
             nameservers:
                 addresses:
-                   - 8.8.8.8
+                   - 10.9.24.112
                    - 8.8.4.4
-                search: []
+                search: [emanuellylaryssa924.labredes.ifalarapiraca.local]
         ens192:
             addresses: [192.168.0.89/29]
     version: 2
@@ -54,14 +54,10 @@ $ ping 10.9.24.1
 $ hostnamectl status
 ```
 
-  * renomear o nome atual para  samba <nomedaequipe_turma>.labredes.ifalarapiraca.local
+  * renomear o nome atual para  samba.<nomedaequipeturma>.labredes.ifalarapiraca.local
 
 ```bash
-$ sudo hostnamectl set-hostname nomedesejado
-```
-
-```
-Exemplo: $ sudo hostnamectl set-hostname samba.Emanuelly-Laryssa_924.labredes.ifalarapiraca.local
+$ sudo hostnamectl set-hostname samba.<nomedaequipeturma>.labredes.ifalarapiraca.local
 ```
  
   3. Verificar os processos:

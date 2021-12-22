@@ -64,10 +64,10 @@ $ ping 10.9.24.1
 $ hostnamectl status
 ```
 
-  * renomear o nome atual para  samba.<nomedaequipeturma>.labredes.ifalarapiraca.local
+  * renomear o nome atual para  samba.nomedaequipeturma.labredes.ifalarapiraca.local
 
 ```bash
-$ sudo hostnamectl set-hostname samba.<nomedaequipeturma>.labredes.ifalarapiraca.local
+$ sudo hostnamectl set-hostname samba.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
  
   3. Verificar os processos:
@@ -678,9 +678,14 @@ sambashare:x:118:laryssa924
 
 ```
 * Em um máquina com Windows (também pode usar linux os MacOS) digite no Winndows Explorer o endereço IP do servidor samba da seguinte forma:
-**\\ip_da_maquina**. Exemplo: \\10.9.24.112
+**\\ip_da_maquina**.  
 ```
-
+```
+\\10.9.24.112
+```
+<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+   <img src="passo010.png" alt="acesso pelo cliente samba"
+	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
 
 <p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
    <img src="passo10.png" alt="acesso pelo cliente samba"

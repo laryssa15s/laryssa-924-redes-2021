@@ -3,6 +3,10 @@
 ## Objetivo: 
 
     * Instalação e configuração do servidor DNS master com o Bind9
+    
+## Informações importantes
+
+   * Antes de tudo é preciso definir duas tabelas: uma com as definições de ips usados e outra com os domínios a serem utilizados também.
 
 ```
 Tabela 1: Definições da rede interna
@@ -19,6 +23,8 @@ Tabela 1: Definições da rede interna
 --------------------------------
 ```      
 
+OBS: na tabela acima estão os nameservers 1 e 2, DNS Master e o Slave, respectivamente. Como a instalação será do DNS Master, apenas será utilizado o nameserver 1 e seu ip correspondente. 
+
 ```
 Tabela 2: Definições do domínio:
 |      Apelido      |               NOME                                   |
@@ -27,6 +33,15 @@ Tabela 2: Definições do domínio:
 | nameserver1 (ns1) | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local |
 | nameserver2 (ns2) | ns2.emanuellylaryssa924.labredes.ifalarapiraca.local |
 | dupla (vm2)       | vm2.emanuellylaryssa924.labredes.ifalarapiraca.local |
+```
+
+OBS: o domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
+
+ * Definir um nome para a máquina virtual como "ns1.nomedaequipeturma.labredes.ifalarapiraca.local"
+
+```bash 
+$ sudo hostnamectl set-hostname samba.emanuellylaryssa924.labredes.ifalarapiraca.local
+$ sudo reboot
 ```
 
 ## Instalação do DNS
@@ -75,7 +90,7 @@ Processing triggers for ufw (0.36-7) ...
 
 ```
 
-* Verificar o status do serviço:
+* Verificar o status do serviço para saber se o servidor DNS está rodando como deve.
 
 ```bash
 $ sudo systemctl status bind9
@@ -106,13 +121,129 @@ Dec 21 21:10:54 ns1.emanuellylaryssa924.labredes.ifalarapiraca.local named[40990
 OBS: é possível perceber que o DNS está rodando ao verificar a palavra "active" em destaque
 
 
-* Em caso de não rodar é preciso ativar o DNS
+* Em caso de não rodar é preciso ativar o DNS.
 
 ```bash
 $ sudo systemctl `enable` bind9
 ```
 
-###
+## A pasta bind
+
+* Será preciso adicionar alguns arquivos à pasta bind para realizar a configuração do DNS Master. 
+
+```
+Realizar a checagem dos arquivos e permissões da pasta bind
+```
+
+```bash
+`$ ls /etc/bind`
+
+bind.keys  db.255    named.conf                named.conf.options
+db.0       db.empty  named.conf.default-zones  rndc.key
+db.127     db.local  named.conf.local          zones.rfc1918
+```
+
+```bash
+`$ ls -la /etc/bind`
+
+total 56
+drwxr-sr-x  2 root bind 4096 Dec 19 18:42 .
+drwxr-xr-x 98 root root 4096 Dec 19 18:42 ..
+-rw-r--r--  1 root root 1991 Apr 27  2021 bind.keys
+-rw-r--r--  1 root root  237 Sep 15  2020 db.0
+-rw-r--r--  1 root root  271 Sep 15  2020 db.127
+-rw-r--r--  1 root root  237 Sep 15  2020 db.255
+-rw-r--r--  1 root root  353 Sep 15  2020 db.empty
+-rw-r--r--  1 root root  270 Sep 15  2020 db.local
+-rw-r--r--  1 root bind  463 Sep 15  2020 named.conf
+-rw-r--r--  1 root bind  498 Sep 15  2020 named.conf.default-zones
+-rw-r--r--  1 root bind  165 Sep 15  2020 named.conf.local
+-rw-r--r--  1 root bind  846 Sep 15  2020 named.conf.options
+-rw-r-----  1 bind bind  100 Dec 19 18:42 rndc.key
+-rw-r--r--  1 root root 1317 Sep 15  2020 zones.rfc1918
+```
+
+### Zonas
+
+* As zonas são extremamente importantes para o funcionamento do servidor DNS e são especificadas em arquivos db. Além disso, elas se dividem em "zona direta" e "zona reversa". Portanto serão criados dois arquivos db, uma para a zona direta e outro para a zona reversa e, assim, ser possível adicionar informações, como o domínio da rede e os ips.
+
+
+* Os arquivos db são bancos de dados usados quando não se tem conhecimento do ip mas tem o nome da máquina. Cada zona tem o seu próprio arquivo db e, por esse motivo, a zona direta terá um e a reversa outra. 
+
+```Criar um diretório para armazenar os arquivos de zonas
+```
+
+```bash
+$ sudo mkdir /etc/bind/zones
+```
+
+```bash
+`$ cd /etc/bind/
+$ ls -la`
+total 60
+drwxr-sr-x  3 root bind 4096 Dec 19 18:48 .
+drwxr-xr-x 98 root root 4096 Dec 19 18:42 ..
+-rw-r--r--  1 root root 1991 Apr 27  2021 bind.keys
+-rw-r--r--  1 root root  237 Sep 15  2020 db.0
+-rw-r--r--  1 root root  271 Sep 15  2020 db.127
+-rw-r--r--  1 root root  237 Sep 15  2020 db.255
+-rw-r--r--  1 root root  353 Sep 15  2020 db.empty
+-rw-r--r--  1 root root  270 Sep 15  2020 db.local
+-rw-r--r--  1 root bind  463 Sep 15  2020 named.conf
+-rw-r--r--  1 root bind  498 Sep 15  2020 named.conf.default-zones
+-rw-r--r--  1 root bind  165 Sep 15  2020 named.conf.local
+-rw-r--r--  1 root bind  846 Sep 15  2020 named.conf.options
+-rw-r-----  1 bind bind  100 Dec 19 18:42 rndc.key
+drwxr-sr-x  2 root bind 4096 Dec 19 18:48 `zones`
+-rw-r--r--  1 root root 1317 Sep 15  2020 zones.rfc1918
+```
+
+```bash
+$ cd /etc/bind/zones/
+$ ls -la
+
+drwxr-sr-x 2 root bind 4096 Dec 19 18:48 .
+drwxr-sr-x 3 root bind 4096 Dec 19 18:48 
+
+```
+OBS: é possível verificar que já foi adicionado o diretório, mas, ao entrar nele, percebe-se que ainda não há arquivo db. Portanto, o próximo passo é criar.
+
+#### Zona direta
+
+```
+* Após a criação do diretório, criar um arquivo db no diretório /etc/bind/zones a partir de uma cópia do arquivo /etc/bind/db.empty
+``` 
+
+```bash 
+$cd /etc/bind/zones
+$ sudo cp /etc/bind/db.empty /etc/bind/zones/db.labredes.ifalarapiraca.local 
+$ ls -la
+```
+
+```
+total 12
+drwxr-sr-x 2 root bind 4096 Dec 19 18:57 .
+drwxr-sr-x 3 root bind 4096 Dec 19 18:48 ..
+-rw-r--r-- 1 root bind  353 Dec 19 18:57 db.labredes.ifalarapiraca.local
+```
+OBS: Veja que agora existe um arquivo db com o dommínio labredes.ifalarapiraca.local, mas é preciso mudar o domínio para EmanuellyLaryssa924.labredes.ifalarapiraca.local. Assim é preciso digitar o seguinte comando: 
+
+```bash
+$ sudo mv db.labredes.ifalarapiraca.local db.EmanuellyLaryssa924.labredes.ifalarapiraca.local  
+```
+Verificar: 
+
+```bash
+$ ls -la
+drwxr-sr-x 2 root bind 4096 Dec 19 19:15 .
+drwxr-sr-x 3 root bind 4096 Dec 19 18:48 ..
+-rw-r--r-- 1 root bind  704 Dec 19 19:15 db.EmanuellyLaryssa924.labredes.ifalarapiraca.local
+```
+
+
+
+
+
 
 
 

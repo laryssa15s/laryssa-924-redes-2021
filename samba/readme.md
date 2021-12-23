@@ -64,7 +64,7 @@ $ ping 10.9.24.1
 $ hostnamectl status
 ```
 
-  * renomear o nome atual para  samba.nomedaequipeturma.labredes.ifalarapiraca.local
+  * Renomear o nome atual para  samba.nomedaequipeturma.labredes.ifalarapiraca.local
 
 ```bash
 $ sudo hostnamectl set-hostname samba.emanuellylaryssa924.labredes.ifalarapiraca.local
@@ -497,6 +497,9 @@ cat smb.conf
    read only = yes
    guest ok = no
 ```
+
+OBS: agora o arquivo está sem os comentários
+
    8. Editar o arquivo de configuração /etc/samba/smb.conf
 
 ```bash

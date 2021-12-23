@@ -686,10 +686,39 @@ sambashare:x:118:laryssa924
 ```
 \\10.9.24.112
 ```
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 1: Tela do Windows Explorer com a tela para fazer login.</center></p>   
    <img src="passo010.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
 
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 2: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
    <img src="passo10.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" /> 
+	
+## Criar um arquivo no samba através de um host local 
+
+* Para saber se o samba está funcionando corretamente basta um arquivo (pode ser em formato.txt) na pasta "laryssa924" e verifica-o na diretório /samba.
+
+1. Criação:
+
+<p><center> Figura 3: Tela do Windows Explorer com um arquivo criado.</center></p>   
+   <img src="s1.png" alt="acesso pelo cliente samba"
+	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
+
+2. Verificação 
+
+```bash
+`$ su laryssa924`
+Password:
+`$ cd
+$ ls -la`
+```
+
+<p><center> Figura 4: Tela do Windows PowerShell mostrando o arquivo criado no Windows Explorer .</center></p>   
+   <img src="s2.png" alt="acesso pelo cliente samba"
+	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
+
+OBS: É, portanto, possível percerber que o servidor samba está funcionando
+
+
+
+

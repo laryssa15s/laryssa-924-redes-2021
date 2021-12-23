@@ -686,11 +686,11 @@ sambashare:x:118:laryssa924
 ```
 \\10.9.24.112
 ```
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 1: Tela do Windows Explorer com a tela para fazer login.</center></p>   
    <img src="passo010.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
 
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 2: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
    <img src="passo10.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" /> 
 	
@@ -700,7 +700,7 @@ sambashare:x:118:laryssa924
 
 1. Criação:
 
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 3: Tela do Windows Explorer com um arquivo criado.</center></p>   
    <img src="s1.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
 
@@ -713,7 +713,7 @@ Password:
 $ ls -la`
 ```
 
-<p><center> Figura 1: Tela do Windows Explorer com o acesso ao recurso compartilhado.</center></p>   
+<p><center> Figura 4: Tela do Windows PowerShell mostrando o arquivo criado no Windows Explorer .</center></p>   
    <img src="s2.png" alt="acesso pelo cliente samba"
 	title="Figura 1: acesso pelo cliente samba" width="1000" height="540" />
 

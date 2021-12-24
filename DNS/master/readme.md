@@ -499,7 +499,7 @@ $ ping ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/pingns1.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
  2. teste do gw
  
  ```bash
@@ -507,7 +507,7 @@ $ ping gw.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/pinggw.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
  3. teste da vm2
 
 ```bash
@@ -515,7 +515,7 @@ $ ping vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/pingvm2.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
 4. teste reverso
  
  ```bash
@@ -523,7 +523,7 @@ $ ping -a 10.9.24.112
 ```
 <p><center> </center></p>   
    <img src="img/pingrev.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
 * Comando nslookup
 
 
@@ -535,7 +535,7 @@ $ nslookup ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/nsns1.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
  2. teste do gw
  
  ```bash
@@ -543,7 +543,7 @@ $ nslookup gw.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/nsgw.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
  3. teste da vm2
 
 ```bash
@@ -551,7 +551,7 @@ $ nslookup vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
 <p><center> </center></p>   
    <img src="img/nsvm2.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
 4. teste reverso
  
  ```bash
@@ -559,7 +559,7 @@ $ nslookup 10.9.24.112
 ```
 <p><center> </center></p>   
    <img src="img/nsrev.png" alt=""
-	title="" width="1000" height="540" />
+	title="" width="1000" height="350" />
 	
 ## Adicionando o DNS no Windows
 

@@ -224,8 +224,8 @@ $ sudo nano db.EmanuellyLaryssa924.labredes.ifalarapiraca.local
 ; Instead, copy it, edit named.conf, and use that copy.
 ;
 $TTL    86400
-@       IN      SOA     ns1.emanuellylaryssa924.labredes.ifalarapiraca.local. root.emanuellylaryssa924.labredes.ifalarapiraca.local. (
-                              7         ; Serial
+@       IN      SOA     ns1.emanuellylaryssa924.labredes.ifalarapiraca.local. root.emanuellylaryssa924.labredes.ifalar>                             
+ 			      8         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
                         2419200         ; Expire
@@ -237,8 +237,9 @@ ns1.emanuellylaryssa924.labredes.ifalarapiraca.local.     IN    A       10.9.24.
 vm2.emanuellylaryssa924.labredes.ifalarapiraca.local.     IN    A       10.9.24.106
 gw.emanuellylaryssa924.labredes.ifalarapiraca.local.      IN    A       10.9.24.1
 vm1    CNAME     ns1                 ; CNAME é um apelido
+samba  CNAME     ns1                 ; CNAME é um apelido
 ```
-OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 7 indica que foram feitas 7 aterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. Vale lembrar que domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
+OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 8 indica que foram feitas 8 alterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. Vale lembrar que domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
 
 * Na pasta bind restartar e verificar o status
 
@@ -249,7 +250,7 @@ $ sudo systemctl status bind9
 
 #### Zona reversa
 
-* Fazer o mesmo processo de criação do arquivo e adição de informações. Todavia, a cloangem para a zona reversa será a partir de db.127.
+* Fazer o mesmo processo de criação do arquivo e adição de informações. Todavia, a cloangem para a zona reversa será a partir de db.12.
 
 ```bash 
 $ sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.24.rev
@@ -341,7 +342,7 @@ $ cd zones/
 $ sudo named-checkzone emanuellylaryssa924.labredes.ifalarapiraca.local db.EmanuellyLaryssa924.labredes.ifalarapiraca.local`
 ```
 ```
-zone emanuellylaryssa924.labredes.ifalarapiraca.local/IN: loaded serial 7
+zone emanuellylaryssa924.labredes.ifalarapiraca.local/IN: loaded serial 8
 OK
 ```
 OBS: está tudo certo. Perceba que o serial tem o mesmo valor que o arquivo db correspondente à zona, por isso a importância dele.

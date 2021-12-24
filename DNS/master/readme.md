@@ -359,8 +359,8 @@ OK
 OBS: sintaxe do arquivo db da zona reversa também está correta.
 
 <p><center> Figura 1: Tela da checagem das zonas.</center></p>   
-   <img src="img/zonas.png" alt="checagem das zonas"
-	title="FFigura 1: Tela da checagem das zonas" width="1000" height="540" />
+   <img src="img/zona.png" alt="checagem das zonas"
+	title="FFigura 1: Tela da checagem das zonas" width="1000" height="350" />
 ## Configurar para somente resolver endereços IPv4
 
 ```bash
@@ -383,8 +383,8 @@ $ sudo systemctl restart bind9
 $ sudo systemctl status bind9
 ```
 <p><center> Figura 2: Tela mostrando o status do bind9 .</center></p>   
-   <img src="img/status.png" alt="status do bind9"
-	title="Figura 2: Tela mostrando o status do bind9" width="1000" height="540" />
+   <img src="img/statusbind9.png" alt="status do bind9"
+	title="Figura 2: Tela mostrando o status do bind9" width="1000" height="350" />
 
 ## Configuração dos clientes
 

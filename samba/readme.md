@@ -674,26 +674,24 @@ sambashare:x:118:laryssa924
 	
 ## Criar um arquivo no samba através de um host local 
 
-* Para saber se o samba está funcionando corretamente basta um arquivo (pode ser em formato.txt) na pasta "laryssa924" e verifica-o na diretório /samba.
+* Para saber se o samba está funcionando corretamente junto ao DNS basta criar um arquivo (pode ser uma parta) em "public" e verifica-o na diretório /samba/public.
 
 1. Criação:
 
 <p><center> Figura 3: Tela do Windows Explorer com um arquivo criado.</center></p>   
-   <img src="img/s1.png" alt="arquivo criado"
+   <img src="img/p1.png" alt="arquivo criado"
 	title="Figura 3: Tela do Windows Explorer com um arquivo criado" width="1000" height="540" />
 
 2. Verificação 
 
 ```bash
-`$ su laryssa924`
-Password:
-`$ cd
-$ ls -la`
+$ cd/etc/bind/zones
+$ ls /samba/public
 ```
 
-<p><center> Figura 4: Tela do Windows PowerShell mostrando o arquivo criado no Windows Explorer .</center></p>   
-   <img src="img/s2.png" alt="mostrando o arquivo criado no Windows Explorer"
-	title="igura 4: Tela do Windows PowerShell mostrando o arquivo criado no Windows Explorer" width="1000" height="540" />
+<p><center> Figura 4: Tela do cmd mostrando o arquivo 'Teste do aluno' que foi criado no Windows Explorer.</center></p>   
+   <img src="img/p2.png" alt="mostrando o arquivo criado no Windows Explorer"
+	title="igura 4: Tela do cmd mostrando o arquivo criado no Windows Explorer" width="1000" height="100" />
 
 OBS: É, portanto, possível percerber que o servidor samba está funcionando
 

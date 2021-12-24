@@ -56,8 +56,9 @@ Tabela 2: Nomes FQDN dos hosts
 | gateway (gw)      | gw.emanuellylaryssa924.labredes.ifalarapiraca.local   |
 | nameserver1 (ns1) | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local  |
 | nameserver2 (ns2) | ns2.emanuellylaryssa924.labredes.ifalarapiraca.local  |
-| dupla (vm2)       | vm2.emanuellylaryssa924.labredes.ifalarapiraca.local  |
-| Samba-SRV         | samba.emanuellylaryssa924.labredes.ifalarapiraca.local|
+| vm da dupla (vm2) | vm2.emanuellylaryssa924.labredes.ifalarapiraca.local  |
+| vm1               | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local  |
+| samba             | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local  |
 ```
 
 ### Configuração do SAMBA

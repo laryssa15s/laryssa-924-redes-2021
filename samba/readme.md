@@ -3,29 +3,7 @@
 ## Objetivo:
       
       * Configurar um servidor compartilhamento de arquivos usando o serviço Samba no linux
-```
-Tabela 1: Definições da rede interna
---------------------------------
-|  DESCRICAO  |  IP            |
---------------------------------
-| rede        | 10.9.24.112    |
-| máscara     | 255.255.255.0  |
-| Gateway     | 10.9.24.1      |
-| Samba-SRV   | 10.9.24.112    |
-| NameServer1 | 10.9.24.112    |
-| NameServer2 | 10.9.24.106    |
---------------------------------
-```      
 
-```
-Tabela 2: Definições do domínio:
-|      Apelido      |               NOME                                   |
-|:------------------|:-----------------------------------------------------|
-| gateway (gw)      | gw.emanuellylaryssa924.labredes.ifalarapiraca.local  |
-| nameserver1 (ns1) | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local |
-| nameserver2 (ns2) | ns2.emanuellylaryssa924.labredes.ifalarapiraca.local |
-| desktophost1 (vm2)| vm2.emanuellylaryssa924.labredes.ifalarapiraca.local |
-```
 ## Passo a passo:
   
   1. Definir o IP da rede interna para o Samba-SRV

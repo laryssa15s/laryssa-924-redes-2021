@@ -4,38 +4,7 @@
 
     * Instalação e configuração do servidor DNS master com o Bind9
     
-## Informações importantes
 
-   * Antes de tudo é preciso definir duas tabelas: uma com as definições de ips usados e outra com os domínios a serem utilizados também.
-
-```
-Tabela 1: Definições da rede interna
---------------------------------
-|  DESCRICAO  |  IP            |
---------------------------------
-| rede        | 10.9.24.112    |
-| máscara     | 255.255.255.0  |
-| Gateway     | 10.9.24.1      |
-| Broadcast   | 10.9.24.255    |
-| Samba-SRV   | 10.9.24.112    |
-| NameServer1 | 10.9.24.112    |
-| NameServer2 | 10.9.24.106    |
---------------------------------
-```      
-
-OBS: na tabela acima estão os nameservers 1 e 2, DNS Master e o Slave, respectivamente. Como a instalação será do DNS Master, apenas será utilizado o nameserver 1 e seu ip correspondente. 
-
-```
-Tabela 2: Definições do domínio:
-|      Apelido      |               NOME                                   |
-|:------------------|:-----------------------------------------------------|
-| gateway (gw)      | gw.emanuellylaryssa924.labredes.ifalarapiraca.local  |
-| nameserver1 (ns1) | ns1.emanuellylaryssa924.labredes.ifalarapiraca.local |
-| nameserver2 (ns2) | ns2.emanuellylaryssa924.labredes.ifalarapiraca.local |
-| dupla (vm2)       | vm2.emanuellylaryssa924.labredes.ifalarapiraca.local |
-```
-
-OBS: o domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
 
  * Definir um nome para a máquina virtual como "ns1.nomedaequipeturma.labredes.ifalarapiraca.local"
 
@@ -43,7 +12,7 @@ OBS: o domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de
 $ sudo hostnamectl set-hostname ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 $ sudo reboot
 ```
-OBS: os servidos Samba e DNS Master foram instaladas na minha vm. Assim, o nome que eu dei antes (samba.emanuellylaryssa924.labredes.ifalarapiraca.local) passou a ser "ns1.emanuellylaryssa924.labredes.ifalarapiraca.local" agora.
+OBS: os servidos Samba e DNS Master foram instaladas na mesma vm. Assim, o nome que, na instalação do Samba, era "samba.emanuellylaryssa924.labredes.ifalarapiraca.local" passou, na instalação do DNS Master, a ser "ns1.emanuellylaryssa924.labredes.ifalarapiraca.local" agora.
 
 ## Instalação do DNS
     
@@ -242,7 +211,7 @@ drwxr-sr-x 3 root bind 4096 Dec 19 18:48 ..
 -rw-r--r-- 1 root bind  704 Dec 19 19:15 db.EmanuellyLaryssa924.labredes.ifalarapiraca.local
 ```
 
-* Agora chegou o momento de adicionar as informações no arquivo: ips e domínios.
+* Agora chegou o momento de adicionar as informações no arquivo: ips e domínios definidos nas tabelas.
 
 ```bash
 $ sudo nano db.EmanuellyLaryssa924.labredes.ifalarapiraca.local
@@ -286,7 +255,7 @@ $ sudo systemctl status bind9
 $ sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.24.rev
 ```
 
-* Adicionar as informações no arquivo db.10.9.24.rev.
+* Adicionar os ips e domínios definidos nas tabelas no arquivo db.10.9.24.rev.
 
 ```bash
 $ cd /etc/bind/zones/

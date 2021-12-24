@@ -278,7 +278,7 @@ $ sudo systemctl restart bind9
 $ sudo systemctl status bind9
 ```
 
-### Zona reversa
+#### Zona reversa
 
 * Fazer o mesmo processo de criação do arquivo e adição de informações. Todavia, a cloangem para a zona reversa será a partir de db.127.
 
@@ -388,6 +388,9 @@ OK
 ```
 OBS: sintaxe do arquivo db da zona reversa também está correta.
 
+<p><center> Figura 1: Tela da checagem das zonas.</center></p>   
+   <img src="img/zonas.png" alt="checagem das zonas"
+	title="FFigura 1: Tela da checagem das zonas" width="1000" height="540" />
 ## Configurar para somente resolver endereços IPv4
 
 ```bash
@@ -402,13 +405,16 @@ RESOLVCONF=no
 # startup options for the server
 OPTIONS="-4 -u bind"
 ```
-* Sair da pasta zones, restartar e verificar o status
+* Sair da pasta zones, restartar e verificar o status do bind9
 
 ```bash
 $cd ..
 $ sudo systemctl restart bind9
 $ sudo systemctl status bind9
 ```
+<p><center> Figura 2: Tela mostrando o status do bind9 .</center></p>   
+   <img src="img/status.png" alt="status do bind9"
+	title="Figura 2: Tela mostrando o status do bind9" width="1000" height="540" />
 
 ## Configuração dos clientes
 
@@ -445,12 +451,14 @@ OBS: o comando acima serve para salvar e aplicar as alterações. Vale lembrar q
 ```bash 
 $ cat /etc/netplan/00-installer-config.yaml
 ```
-PRINT AQUI
+<p><center> Figura 3: Tela da interface ens160.</center></p>   
+   <img src="img/cat.png" alt="interface ens160"
+	title="Figura 3: Tela da interface ens160" width="1000" height="540" />
 
 ## Testando o servidor DNS
 
     1. Teste de configuração como cliente.
-* Verificar se o io do ns1 e o domínio do search, adicionados na interface ens160, foram reconhecidos como DNS Servers e DNS Domain, respectivamente.
+* Verificar se o ip do ns1 e o domínio do search, adicionados na interface ens160, foram reconhecidos como DNS Servers e DNS Domain, respectivamente.
 
 ```bash
 $ systemd-resolve --status ens160
@@ -469,6 +477,10 @@ MulticastDNS setting: no
          DNS Servers: 10.9.24.112
           DNS Domain: emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
+
+<p><center> Figura 4: Tela do status da interface ens160 .</center></p>   
+   <img src="img/resolve.png" alt="status da interface ens160"
+	title="Figura 4: Tela do status da interface ens160" width="1000" height="540" />
 
     2. Teste o serviço DNS para a máquina ns1.
     
@@ -553,4 +565,60 @@ $ nslookup vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
 $ nslookup 10.9.24.112
 ```
 
+## Adicionando o DNS no Windows
 
+No  Windows  é possível adicionar o  DNS Server na configuração da interface de rede 
+Para acessar pelo nome em vez de somente pelo IP .
+
+* Passo a passo em imagens: 
+
+
+1. 
+  <p><center> </center></p>   
+   <img src="img/w1.png" alt=""
+	title="" width="1000" height="540" />
+
+2. 
+   <p><center> </center></p>   
+   <img src="img/w2.png" alt=""
+	title="" width="1000" height="540" />
+3. 
+   <p><center> </center></p>   
+   <img src="img/w3.png" alt=""
+	title="" width="1000" height="540" />
+4. 
+   <p><center> </center></p>   
+   <img src="img/w4.png" alt=""
+	title="" width="1000" height="540" />
+5. 
+   <p><center> </center></p>   
+   <img src="img/w5.png" alt=""
+	title="" width="1000" height="540" />
+6. 
+   <p><center> </center></p>   
+   <img src="img/w6.png" alt=""
+	title="" width="1000" height="540" />
+   
+OBS: Adicionar o ip do ns1
+7. 
+   <p><center> </center></p>   
+   <img src="img/w7.png" alt=""
+	title="" width="1000" height="540" />
+   
+   OBS: foi verificado se realmente ele foi adicionado. Realmente foi.
+8. 
+   <p><center> </center></p>   
+   <img src="img/w8.png" alt=""
+	title="" width="1000" height="540" />
+   
+OBS: Em vem de entrar digitando o ip, basta digitar \\ns1.emanuellylaryssa924.labredes.ifalarapiraca.local.
+9. 
+   <p><center> </center></p>   
+   <img src="img/w9.png" alt=""
+	title="" width="1000" height="540" />
+10. 
+   <p><center> </center></p>   
+   <img src="img/w10.png" alt=""
+	title="" width="1000" height="540" />
+
+OBS: foi possível acessar os arquivos  do servidor samba digitando o nome do ns1 pelo motivo de possuirem o mesmo ip.

@@ -693,8 +693,7 @@ $ ls /samba/public
    <img src="img/p2.png" alt="mostrando o arquivo criado no Windows Explorer"
 	title="igura 4: Tela do cmd mostrando o arquivo criado no Windows Explorer" width="1000" height="100" />
 
-OBS: É, portanto, possível percerber que o servidor samba está funcionando
-
+OBS: É, portanto, possível percerber que o caminho especificado em "path = /samba/public", no ambiente public, dentro do arquivo smb.conf,  foi usado para ter acesso ao que foi criado.
 
 
 

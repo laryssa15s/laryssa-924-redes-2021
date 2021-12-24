@@ -595,7 +595,7 @@ Para acessar pelo nome em vez de somente pelo IP .
    <img src="img/w6.png" alt=""
 	title="" width="1000" height="540" />
    
-OBS: Adicionar o ip do ns1
+OBS: Adicionar o ip do ns1 
 7. 
    <p><center> </center></p>   
    <img src="img/w7.png" alt=""
@@ -618,3 +618,7 @@ OBS: Em vem de entrar digitando o ip, basta digitar \\ns1.emanuellylaryssa924.la
 	title="" width="1000" height="540" />
 
 OBS: foi possível acessar os arquivos  do servidor samba digitando o nome do ns1 pelo motivo de possuirem o mesmo ip.
+
+```
+IMPORTANTE: em caso de perder a conexão com open vpn, ou seja, com a rede, é preciso refazer todo o processo.
+```

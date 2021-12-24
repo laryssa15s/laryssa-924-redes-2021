@@ -493,51 +493,68 @@ MulticastDNS setting: no
 ```bash
 $ dig ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/digns1.png" alt=""
+	title="" width="1000" height="540" />
  2. teste do gw
  
  ```bash
 $ dig gw.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/diggw.png" alt=""
+	title="" width="1000" height="540" />
  3. teste da vm2
 
 ```bash
 $ dig vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/vm2dig.png" alt=""
+	title="" width="1000" height="540" />
  4. teste -x 
  
  ```bash
 $ dig -x 10.9.24.112
 ```
-
+<p><center> </center></p>   
+   <img src="img/digrev.png" alt=""
+	title="" width="1000" height="540" />
+	
 * Comando ping
-
 
 1. teste do ns1 
 
 ```bash
 $ ping ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/pingns1.png" alt=""
+	title="" width="1000" height="540" />
  2. teste do gw
  
  ```bash
 $ ping gw.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/pinggw.png" alt=""
+	title="" width="1000" height="540" />
  3. teste da vm2
 
 ```bash
 $ ping vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
-
+```
+<p><center> </center></p>   
+   <img src="img/pingvm2.png" alt=""
+	title="" width="1000" height="540" />
 4. teste reverso
  
  ```bash
 $ ping -a 10.9.24.112
 ```
-
+<p><center> </center></p>   
+   <img src="img/pingrev.png" alt=""
+	title="" width="1000" height="540" />
 * Comando nslookup
 
 
@@ -547,24 +564,34 @@ $ ping -a 10.9.24.112
 ```bash
 $ nslookup ns1.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/nsns1.png" alt=""
+	title="" width="1000" height="540" />
  2. teste do gw
  
  ```bash
 $ nslookup gw.emanuellylaryssa924.labredes.ifalarapiraca.local
 ```
-
+<p><center> </center></p>   
+   <img src="img/nsgw.png" alt=""
+	title="" width="1000" height="540" />
  3. teste da vm2
 
 ```bash
 $ nslookup vm2.emanuellylaryssa924.labredes.ifalarapiraca.local
-
+```
+<p><center> </center></p>   
+   <img src="img/nsvm2.png" alt=""
+	title="" width="1000" height="540" />
 4. teste reverso
  
  ```bash
 $ nslookup 10.9.24.112
 ```
-
+<p><center> </center></p>   
+   <img src="img/nsrev.png" alt=""
+	title="" width="1000" height="540" />
+	
 ## Adicionando o DNS no Windows
 
 No  Windows  é possível adicionar o  DNS Server na configuração da interface de rede 

@@ -238,7 +238,7 @@ vm2.emanuellylaryssa924.labredes.ifalarapiraca.local.     IN    A       10.9.24.
 gw.emanuellylaryssa924.labredes.ifalarapiraca.local.      IN    A       10.9.24.1
 vm1    CNAME     ns1                 ; CNAME é um apelido
 ```
-OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 7 indica que foram feitas 7 aterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. 
+OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 7 indica que foram feitas 7 aterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. Vale lembrar que domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
 
 * Na pasta bind restartar e verificar o status
 
@@ -279,14 +279,14 @@ $TTL    604800
 106  IN      PTR     vm2.emanuellylaryssa924.labredes.ifalarapiraca.local.              ; 10.9.24.106
 1    IN      PTR     gw.emanuellylaryssa924.labredes.ifalarapiraca.local.               ; 10.9.24.1
 ```
+
+OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 3 indica que foram feitas 3 aterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. Vale lembrar que domínio não pode conter letras maiúsculas, espaços e/ou algum tipo de caracter especial, como "-" e "_".
 * Na pasta bind restartar e verificar o status
 
 ```bash
 $ sudo systemctl restart bind9
 $ sudo systemctl status bind9
 ```
-
-OBS: a cada nova alteração o serial aumenta em 1. Assim, o serial 3 indica que foram feitas 3 aterações. Em caso de não somar +1 ao serial o dns pode não funcionar corretamente. Além disso, o que está após ; é comentário. 
 
 ## Configurar o arquivo named.conf.local
 

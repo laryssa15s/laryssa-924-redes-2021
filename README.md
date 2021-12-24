@@ -3,7 +3,7 @@
 ## Dados da equipe e do professor
 
 ```
-Dupla: Emanuelly Vitória 
+Dupla: Emanuelly Vitória da Silva Santos
        Laryssa Maria dos Santos
 Turma: 924
 Professor: Alaelson Jatobá

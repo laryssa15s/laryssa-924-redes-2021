@@ -17,15 +17,14 @@ Professor: Alaelson Jatobá
 Fazer a instalação dos servidores Samba e DNS Master, bem como a implementação do ip do ns1 no Windowa para acessar os arquivos do samba pelo nome e não somente pelo ip. 
 
 #### Samba
-```
- é um software usado para Linux e também outros sistemas derivados de Unix, é usado para compartilhar e administrar os recursos nas redes que são formadas por máquinas com Windows. Dessa maneira possibilita o uso de Linux como servidor de impressão e de arquivos além de vários outros.
-```
+
+* É um software usado para Linux e também outros sistemas derivados de Unix, é usado para compartilhar e administrar os recursos nas redes que são formadas por máquinas com Windows. Dessa maneira possibilita o uso de Linux como servidor de impressão e de arquivos além de vários outros.
+
 
 #### DNS 
 
-```
-O DNS Master e o DNS Slave são servidores responsáveis por fazer a tradução dos nomes dos sites que são pesquisados nos navegadores para os endereços IPs desses sites. No momento só será abordado a instalação e configuração do DNS Master.
-```
+* O DNS Master e o DNS Slave são servidores responsáveis por fazer a tradução dos nomes dos sites que são pesquisados nos navegadores para os endereços IPs desses sites. No momento só será abordado a instalação e configuração do DNS Master.
+
 
 ## Definições de rede
 
